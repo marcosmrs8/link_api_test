@@ -1,4 +1,4 @@
-# Integration Pipedrive with Bling
+# Integração Pipedrive com Bling
 
 # Como começar
 
@@ -24,6 +24,7 @@
 
 Nesse momento as rotas já estão functionais!
 # Swagger
+ - Pode ser acessado na url http://localhost:5000/api-docs/ 
 <img width="1018" alt="swagger" src="https://user-images.githubusercontent.com/51254319/156943353-df8f14c8-4aa0-4198-ad98-f6cfcc71cedc.png">
 
 # Rotas
