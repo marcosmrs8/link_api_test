@@ -40,13 +40,17 @@ export async function addNewOrder(req, res){
         }
    
     }   
-    res.status(200).send(response)    
+    res.sendStatus(200)
 }
 
 export async function listAll(req, res){
     Order.find(function(err, order){
         if(err) return res.send(err.message)
-        res.status(200).send(order)
+        if(order.length >= 1){
+            res.status(200).send(order)
+        }else{
+            res.status(404).send('nenhuma dado encontrado')
+        }
     })
 }
 

@@ -1,0 +1,108 @@
+{
+    "openapi": "3.0.0",
+    "info":{
+        "title": "Api de integração entre Pipedrive and Bling",
+        "contact":{
+            "email": "marcosmrs8@hotmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers":[
+        {
+            "url": "http://localhost:5000/v1"
+        }
+    ],
+    "paths":{
+        "/orders":{
+            "post":{
+                "summary": "Update Deals",
+                "description": "Busca deals como won e envia como pedido para o bling",
+                "tags":["Deals"],
+                "responses":{
+                    "200":{
+                        "description": "OK"
+                    },
+                    "500":{
+                        "description": "Internal Error"
+                    }
+                }
+            }      
+        },
+        "/list":{
+            "get":{
+                "summary": "Busca todas collections no banco",
+                "description": "Busca todas collections no banco",
+                "tags":["Orders"],
+                "responses":{
+                    "200":{
+                        "description": "Ok"              
+                    },
+                    "404":{
+                        "description": "Not found"
+                    }   
+                } 
+
+            }
+         
+        },
+        "/list/{date}":{
+            "get":{               
+                "summary": "Busca collection by date",
+                "description": "Busca collection by date",
+                "tags":["Orders"] ,
+                "parameters":[
+                    { 
+                        "name": "date",
+                        "in": "path",
+                        "type": "string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description": "Ok"
+                    
+                    },
+                    "404":{
+                        "description": "Not found"
+                    }   
+                }
+            
+            }
+      
+        }
+        
+    },
+    "component":{
+        "schemas":{
+            "Orders":{
+                "type": "object",
+                "properties":{
+                "id": {
+                    "type":"string"
+                },
+                "date" :{
+                    "type": "string"
+                },
+                "total_value":{
+                    "type": "number"
+                },
+                "oportunity":{
+                    "type": "array",
+                    "properties":{
+                        "id":{
+                            "type": "number"
+                        },
+                        "value":{
+                            "type": "number"
+                        },
+                        "name":{
+                            "type": "string"
+                        }
+                    }
+                }
+                }      
+            }
+        }
+    }
+
+}
