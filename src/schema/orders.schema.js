@@ -11,13 +11,13 @@ const orderSchema = new mongoose.Schema(
     {
         date: String,
         total_value: Number,
-        oportunity:[{
-            id: String,
-            value: Number,
-            name: String
-            // type: Array,
-            // of: userSchema
-        }]
+        oportunity:[
+            // id: String,
+            // value: Number,
+            // name: String
+            // // type: Array,
+            // // of: userSchema
+        ]
     }
 )
 

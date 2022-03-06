@@ -25,21 +25,31 @@ export async function addNewOrder(req, res){
         
                 })
                 await order.save()
-            }else{
-                let Oportunities = {id : deal.id, value: deal.value, name: deal.person_name }
-                let updated= {
-                    total_value: Deals.total_value + deal.value,
-                    oportunity:[Oportunities]
-                }
-                await Order.findOneAndUpdate({"_id":Deals.id}, { updated}, { upsert: true, new: true})  
-                
+            }else{                    
+                let total = 0;         
+                let Oportunities = {id : deal.id, value: deal.value, name: deal.person_name }     
+                const updateDB = await Order.findOneAndUpdate({"_id": Deals.id}, { $addToSet:{oportunity: Oportunities}}, {upsert: true, new: true}) 
+                updateDB.oportunity.map(oport=> {
+                    console.log(oport)
+                    total += oport.value
+                })                
+                await Order.findOneAndUpdate({"_id": Deals.id}, {total_value: total})
             }
         }catch(e){
             console.log(e.message)
+            res.status(e.status)
+            res.send(e.message)
         }
    
     }
    
     res.send(response)
     
+}
+
+export async function listAll(req, res){
+    Order.find(function(err, order){
+        if(err) return res.send(err.message)
+        res.send(order)
+    })
 }
