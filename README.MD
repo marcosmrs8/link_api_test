@@ -23,6 +23,9 @@
 4 Inicie a aplicação com `yarn start` ou `npm start`
 
 Nesse momento as rotas já estão functionais!
+# Swagger
+<img width="1018" alt="swagger" src="https://user-images.githubusercontent.com/51254319/156943353-df8f14c8-4aa0-4198-ad98-f6cfcc71cedc.png">
+
 # Rotas
 ## Post `v1/orders`
   - No **Post** ocorre a verificação de novos deals com status 'won' e logo em seguida o envio para o Bling e atualização do MongoDB
@@ -102,4 +105,4 @@ Nesse momento as rotas já estão functionais!
 2. No **Pipedrive** vá até 'Company settings' e no canto direito escolha 'Tools and apps' e finalmente 'Webhook'
 3. Clique em 'Create new webhook' e preencha com seu ngrok/v1/orders e com os campos como a imagem
 <img width="746" alt="pipedrive" src="https://user-images.githubusercontent.com/51254319/156938151-3e5a6dd9-1ae5-43d0-a935-e2e282005ec4.png">
-4. Agora é só testar!
+4. Agora é só testar dando update em algum user pra 'won' no Pipedrive.
