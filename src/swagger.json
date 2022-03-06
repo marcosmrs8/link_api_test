@@ -47,8 +47,8 @@
         },
         "/list/{date}":{
             "get":{               
-                "summary": "Busca collection by date",
-                "description": "Busca collection by date",
+                "summary": "Busca collection por data",
+                "description": "Busca collection por data - YYYY-MM-DD",
                 "tags":["Orders"] ,
                 "parameters":[
                     { 
@@ -71,38 +71,6 @@
       
         }
         
-    },
-    "component":{
-        "schemas":{
-            "Orders":{
-                "type": "object",
-                "properties":{
-                "id": {
-                    "type":"string"
-                },
-                "date" :{
-                    "type": "string"
-                },
-                "total_value":{
-                    "type": "number"
-                },
-                "oportunity":{
-                    "type": "array",
-                    "properties":{
-                        "id":{
-                            "type": "number"
-                        },
-                        "value":{
-                            "type": "number"
-                        },
-                        "name":{
-                            "type": "string"
-                        }
-                    }
-                }
-                }      
-            }
-        }
     }
 
 }
