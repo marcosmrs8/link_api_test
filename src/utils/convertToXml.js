@@ -5,9 +5,8 @@ const xml =
     `<?xml version="1.0" encoding="UTF-8"?>
     <pedido>
     <cliente>
-    <nome>${order.person_id === null ?  "Any name" : order.person_id.name}</nome>
-    </cliente>   
-    
+    <nome>${order.person_id.name}</nome>
+    </cliente>       
     <itens>
     <item>
     <codigo>${order.id}</codigo>

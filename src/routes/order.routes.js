@@ -1,9 +1,10 @@
 import { Router } from 'express';
-import {addNewOrder, listAll} from '../controllers/OrderController.js';
+import {addNewOrder, listAll, listDate} from '../controllers/OrderController.js';
 
 const routes = new Router()
 
-routes.get('/order', addNewOrder);
-routes.get('/listAll', listAll)
+routes.post('/orders', addNewOrder);
+routes.get('/list', listAll)
+routes.get('/list/:date', listDate)
 
 export default routes;

@@ -9,7 +9,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json());
 app.use(cors());
 connectDB()
-app.use(routes)
+app.use('/v1', routes)
 
 const listener = app.listen(5000, () => {
     console.log("App is listening on port " + listener.address().port);

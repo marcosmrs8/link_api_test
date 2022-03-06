@@ -30,26 +30,40 @@ export async function addNewOrder(req, res){
                 let Oportunities = {id : deal.id, value: deal.value, name: deal.person_name }     
                 const updateDB = await Order.findOneAndUpdate({"_id": Deals.id}, { $addToSet:{oportunity: Oportunities}}, {upsert: true, new: true}) 
                 updateDB.oportunity.map(oport=> {
-                    console.log(oport)
                     total += oport.value
                 })                
                 await Order.findOneAndUpdate({"_id": Deals.id}, {total_value: total})
             }
         }catch(e){
-            console.log(e.message)
-            res.status(e.status)
-            res.send(e.message)
+            console.error(e)
+            return res.status(500)
         }
    
-    }
-   
-    res.send(response)
-    
+    }   
+    res.status(200).send(response)    
 }
 
 export async function listAll(req, res){
     Order.find(function(err, order){
         if(err) return res.send(err.message)
-        res.send(order)
+        res.status(200).send(order)
     })
+}
+
+export async function listDate(req, res){
+    const date = req.params.date
+    try {
+        Order.find({date: date}, function(err, order){
+            if(err) return res.send(err.message)   
+            if(order.length >= 1){
+                res.status(200).send(order)
+            }else{
+                res.status(404).send('Nenhum dado encontrado para esta data')
+            }           
+                
+        })
+    } catch (error) {
+        return res.status(404)
+    }
+
 }
