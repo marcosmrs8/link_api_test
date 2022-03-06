@@ -4,8 +4,8 @@ import Order from '../schema/orders.schema.js'
 
 export async function addNewOrder(req, res){
     const response = await getPipedriveWonDeals()
-    for (const i of response){
-        await formatAndSendOrderToBling(i)
+    for (const orders of response){
+        await formatAndSendOrderToBling(orders)
     }
     for (const deal of response){
         try{        
@@ -54,7 +54,7 @@ export async function listAll(req, res){
     })
 }
 
-export async function listDate(req, res){
+export async function listByDate(req, res){
     const date = req.params.date
     try {
         Order.find({date: date}, function(err, order){
