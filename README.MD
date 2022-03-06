@@ -1,4 +1,4 @@
-# Integration Pipedrive with Bling
+# Integração Pipedrive com Bling
 
 # Como começar
 
